@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void Start() 
+    private void Start()
     {
         if (PhotonNetwork.LocalPlayer == PhotonNetwork.MasterClient)
         {
@@ -57,10 +57,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (fadeCoroutine != null)
             StopCoroutine(fadeCoroutine);
-        
+
         fadeCoroutine = StartCoroutine(FadeRoutine(__isFadingIn, __factor));
     }
-    
+
     IEnumerator FadeRoutine(bool __fadingIn, float __factor = 1f)
     {
         yield return new WaitForSeconds(3f);
@@ -116,12 +116,12 @@ public class GameManager : MonoBehaviourPunCallbacks
     IEnumerator OnScoreRoutine(Players __player)
     {
         GoalTextObject.SetActive(true);
-        Handheld.Vibrate();
+        //Handheld.Vibrate();
 
         yield return new WaitForSeconds(2f);
 
         GoalTextObject.SetActive(false);
-        
+
         CheckEndGame();
 
         if (!gameFinished)
@@ -152,7 +152,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void CheckEndGame()
     {
-        foreach (KeyValuePair<int, Photon.Realtime.Player> _pl in  PhotonNetwork.CurrentRoom.Players)
+        foreach (KeyValuePair<int, Photon.Realtime.Player> _pl in PhotonNetwork.CurrentRoom.Players)
         {
             if (_pl.Value == PhotonNetwork.MasterClient)
             {
@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
                 clientNameText = _pl.Value.NickName;
             }
-        }    
+        }
 
         if (BluePlayerScore >= 5)
         {
@@ -247,7 +247,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         GameManager.Instance.StartFadeRoutine(false, 4f);
 
         yield return new WaitForSeconds(2f);
-        
+
         yield return new WaitForSeconds(2f);
 
         SceneManager.LoadScene(1);

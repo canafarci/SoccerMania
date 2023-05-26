@@ -21,9 +21,6 @@ public class AudioManager : MonoBehaviour
     public bool isMainMenu, gameIsOver;
     private bool isFirstTimeMusicPlaying = true;
     private int randomMusicIndex, previousMusicIndex;
-
-    private static int ssIndex;
-
     //singleton
     public static AudioManager Instance { get; private set; }
     void Awake()
@@ -53,11 +50,6 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            ScreenCapture.CaptureScreenshot("ss/" + ssIndex.ToString() + ".png");
-            ssIndex++;
-        }
 
         if (!gameIsOver)
             CheckAndPlayMusic();

@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
 
     IEnumerator ShakeRoutine()
     {
-        Handheld.Vibrate();
+        //Handheld.Vibrate();
         cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 2f;
         yield return new WaitForSeconds(0.5f);
         cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 0f;
